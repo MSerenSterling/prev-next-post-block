@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "create-block/prev-next",
+	"version": "0.1.0",
+	"title": "Prev Next",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Previous and next post buttons block",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "prev-next",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
