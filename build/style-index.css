@@ -8,9 +8,87 @@
  * Replace them with your own styles or remove the file completely.
  */
 .wp-block-create-block-prev-next {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.wp-block-create-block-prev-next > * {
+  flex-basis: 50%;
+}
+.wp-block-create-block-prev-next a {
+  display: flex;
+  flex-wrap: wrap;
+  text-decoration: none;
+  gap: 1rem;
+  position: relative;
+  margin-bottom: 2rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.wp-block-create-block-prev-next a::before, .wp-block-create-block-prev-next a::after {
+  content: "";
+  width: 100%;
+  height: 2rem;
+  position: absolute;
+}
+.wp-block-create-block-prev-next a::before {
+  bottom: 0;
+  background-color: var(--wp--preset--color--secondary);
+  z-index: -1;
+  transform: translateY(100%);
+  transition: 0.8s cubic-bezier(0.29, 1.01, 1, -0.68);
+}
+.wp-block-create-block-prev-next a::after {
+  top: 100%;
+  background-color: white;
+}
+.wp-block-create-block-prev-next a:hover::before, .wp-block-create-block-prev-next a:focus::before {
+  transform: translateY(0);
+}
+.wp-block-create-block-prev-next img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.prev-next-thumbnail {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.next-post .prev-next-thumbnail {
+  order: 1;
+}
+
+.next-post .prev-next-content {
+  text-align: right;
+}
+
+.prev-next-content > p {
+  margin: 0;
+}
+
+.prev-next-content {
+  align-self: flex-end;
+}
+@media (min-width: 600px) {
+  .prev-next-content {
+    -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+
+.prev-next-text {
+  font-size: 0.875rem;
+}
+
+.prev-next-title {
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--wp--preset--color--black);
 }
 
 /*# sourceMappingURL=style-index.css.map*/

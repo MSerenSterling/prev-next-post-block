@@ -26,13 +26,14 @@ function prev_next_block_dynamic_render_callback( $block_attributes, $content) {
 	$next_id = get_next_post()->ID;
 	
 	//TODO: Add prev/next post text to front end editor
+	//TODO: Add image toggle and size select to front end editor
 	$prev_html = $prev_id ? prev_next_html_block_content($prev_id, 'Prev Post') : '';
 
 	$next_html = $next_id ? prev_next_html_block_content($next_id, 'Next Post') : '';
 
 
 	return <<<HTML
-		<div class="prev-next-block">
+		<div class="wp-block-create-block-prev-next">
 			$prev_html
 			$next_html
 		</div>
@@ -42,13 +43,17 @@ function prev_next_block_dynamic_render_callback( $block_attributes, $content) {
 function prev_next_html_block_content($id, $text) {
 	ob_start();
 	?>
-		<a href="<?= get_permalink($id);?>">
-			<?= get_the_post_thumbnail( $id, 'medium'); ?>
-			<div>
+		<a href="<?= get_permalink($id);?>" class="<?= strtolower(str_replace( array(" "), "-", $text ) );?>">
+			<?php if (has_post_thumbnail( $id )) { ?>
+				<div class="prev-next-thumbnail">
+					<?= get_the_post_thumbnail( $id, 'medium'); ?>
+				</div>
+			<?php } ?>
+			<div class="prev-next-content">
 				<?php if ($text) { ?>
-					<p><?= $text; ?></p>
+					<p class="prev-next-text"><?= $text; ?></p>
 				<?php } ?>
-				<p><?=get_the_title( $id );?></p>
+				<p class="prev-next-title"><?=get_the_title( $id );?></p>
 			</div>
 		</a>
 	<?php
